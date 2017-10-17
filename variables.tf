@@ -1,3 +1,14 @@
+variable "aws_profile" {
+  type        = "string"
+  description = "AWS profile to use when managing resources"
+  default     = "default"
+}
+
+variable "region" {
+  type        = "string"
+  description = "AWS region in which ECS cluster is located"
+}
+
 variable "vpc_id" {
   type        = "string"
   description = "ID of VPC in which ECS cluster is located"

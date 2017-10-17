@@ -1,7 +1,12 @@
 # MAIN
 
-data "aws_region" "current" {
-  current = true
+provider "aws" {
+  profile = "${var.aws_profile}"
+  region  = "${var.region}"
+}
+
+data "aws_region" "region" {
+  name = "${var.region}"
 }
 
 data "aws_vpc" "vpc" {
