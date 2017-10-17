@@ -12,9 +12,9 @@ data "template_file" "container_definition" {
     app_port              = "${var.app_port}"
     environment           = "${jsonencode(var.docker_environment)}"
     mount_points          = "${jsonencode(var.docker_mount_points)}"
-    awslogs_region        = "${data.aws_region.current.name}"
+    awslogs_region        = "${data.aws_region.region.name}"
     awslogs_group         = "${var.service_identifier}-${var.task_identifier}"
-    awslogs_region        = "${data.aws_region.current.name}"
+    awslogs_region        = "${data.aws_region.region.name}"
     awslogs_stream_prefix = "${var.service_identifier}"
   }
 }
