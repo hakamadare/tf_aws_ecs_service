@@ -20,6 +20,7 @@ data "template_file" "container_definition" {
 }
 
 resource "aws_ecs_task_definition" "task" {
+  provider              = "aws.provided"
   family                = "${var.service_identifier}-${var.task_identifier}"
   container_definitions = "${data.template_file.container_definition.rendered}"
   network_mode          = "${var.network_mode}"
@@ -27,6 +28,7 @@ resource "aws_ecs_task_definition" "task" {
 }
 
 resource "aws_ecs_service" "service" {
+  provider        = "aws.provided"
   name            = "${var.service_identifier}-${var.task_identifier}-service"
   cluster         = "${var.ecs_cluster_arn}"
   task_definition = "${aws_ecs_task_definition.task.arn}"
@@ -53,6 +55,7 @@ resource "aws_ecs_service" "service" {
 }
 
 resource "aws_cloudwatch_log_group" "task" {
+  provider          = "aws.provided"
   name              = "${var.service_identifier}-${var.task_identifier}"
   retention_in_days = "${var.ecs_log_retention}"
 }
