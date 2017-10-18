@@ -50,7 +50,7 @@ resource "aws_ecs_service" "service" {
     "aws_alb_target_group.service",
     "aws_alb_listener.service_https",
     "aws_alb_listener.service_http",
-    "aws_iam_role.service"
+    "aws_iam_role.service",
   ]
 }
 
